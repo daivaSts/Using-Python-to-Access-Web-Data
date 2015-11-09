@@ -17,21 +17,22 @@ url_list = []
 url = "http://pr4e.dr-chuck.com/tsugi/mod/python-data/data/known_by_Vicky.html "
 
 while count != 0:
-    
-    html = urllib.urlopen(url).read()
-    soup = BeautifulSoup(html)
+
+    html = urllib.urlopen(url)
+    html_data = html.read()
+    soup = BeautifulSoup(html_data)
     tags = soup('a')
-    
-    
+
+
     url_list = [tag.get('href', None) for tag in tags]
-    name_list = [tag.contents[0] for tag in tags]  
-        
+    name_list = [tag.contents[0] for tag in tags]
+
     url = url_list[position-1]
     name = name_list[position-1]
-     
-    name_list = []  
+
+    name_list = []
     url_list = []
-     
-    count -= 1 
-         
-print name  
+
+    count -= 1
+
+print name
